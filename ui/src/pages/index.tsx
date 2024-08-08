@@ -1,13 +1,15 @@
 
 import Head from 'next/head';
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import GradientBG from '../components/GradientBG.js';
 import styles from '../styles/Home.module.css';
 import heroMinaLogo from '../../public/assets/hero-mina-logo.svg';
 import arrowRightSmall from '../../public/assets/arrow-right-small.svg';
 
 export default function Home() {
+  const [message, setMessage] = useState('');
+  
   useEffect(() => {
     (async () => {
       const { Mina, PublicKey } = await import('o1js');
@@ -26,6 +28,21 @@ export default function Home() {
       //const zkApp = new Add(PublicKey.fromBase58(zkAppAddress))
     })();
   }, []);
+
+  const deployContract = async () => {
+    console.log('clicked')
+    try {
+      const response = await fetch('/api/deploy', {
+        method: 'POST',
+      });
+
+      const result = await response.json();
+      setMessage(result.data);
+    } catch (error) {
+      console.error('Error deploying contract:', error);
+      setMessage('Deployment failed');
+    }
+  };
 
   return (
     <>
@@ -53,12 +70,13 @@ export default function Home() {
             </a>
             <p className={styles.tagline}>
               built with
-              <code className={styles.code}> o1js</code>
+              <code className={styles.code}>o1js</code>
             </p>
+            <button className='cursor-pointer' onClick={() => deployContract()}>Deploy</button>
           </div>
           <p className={styles.start}>
             Get started by editing
-            <code className={styles.code}> src/pages/index.js</code> or <code className={styles.code}> src/pages/index.tsx</code>
+            <code className={styles.code}>src/pages/index.js</code> or <code className={styles.code}>src/pages/index.tsx</code>
           </p>
           <div className={styles.grid}>
             <a
