@@ -45,6 +45,7 @@
 .container {
   position: relative;
   height: 100vh;
+  margin-top: -32px;
 }
 
 .tagline {
@@ -68,14 +69,17 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
-  width: var(--max-width);
-  max-width: 100%;
+  grid-template-columns: repeat(4, 1fr); /* each column takes up an equal fraction of the available width */
+  gap: 20px; /* Adds space between each card */
+  width: 100%; /* Adjusts the grid width to fill its container */
+  max-width: 100%; 
+  justify-items: center; /* Centers the content of each grid item */
   margin-bottom: 3rem;
-  justify-items: center;
 }
 
 .card {
+  width: 100%; /* Make cards take up the full width of their grid column */
+  max-width: 18rem; /* Ensures cards don’t exceed a specific width */
   padding: 0.8rem 1rem;
   gap: 0.5rem;
   margin: 1rem;
@@ -85,7 +89,6 @@
   border-radius: 4px 1px;
   transform-style: preserve-3d;
   transition: background 200ms, border 200ms;
-  width: 14rem;
 }
 
 .card:after {
@@ -140,7 +143,9 @@
   position: relative;
   mix-blend-mode: difference;
   filter: invert(0.7);
+  margin-top: -48px;
 }
+
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
@@ -183,7 +188,7 @@
   .grid {
     grid-template-columns: 1fr;
     max-width: 320px;
-    grid-template-rows: repeat(4, minmax(25%, auto));
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .start {
@@ -204,6 +209,6 @@
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
-    grid-template-columns: repeat(2, 50%);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
