@@ -7,7 +7,8 @@
       "keyPath": "keys/devnet.json",
       "feepayerKeyPath": "/Users/sarah/.cache/zkapp-cli/keys/01-deploy.json",
       "feepayerAlias": "01-deploy",
-      "fee": "0.1"
+      "fee": "0.1",
+      "smartContract": "Match"
     }
   }
 }
