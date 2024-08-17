@@ -1,17 +1,17 @@
-import { Field, SmartContract, state, State, method, Poseidon } from 'o1js';
+// import { Field, SmartContract, state, State, method, Poseidon } from 'o1js';
 
-export class Match extends SmartContract {
-  @state(Field) x = State<Field>();
+// export class Match extends SmartContract {
+//   @state(Field) x = State<Field>();
 
-  @method async initState(salt: Field, firstSecret: Field) {
-    this.x.set(Poseidon.hash([salt, firstSecret]));
-  }
+//   @method async initState(salt: Field, firstSecret: Field) {
+//     this.x.set(Poseidon.hash([salt, firstSecret]));
+//   }
 
-  @method async matchSecret(salt: Field, secret: Field) {
-    const x = this.x.get();
-    this.x.requireEquals(x);
+//   @method async matchSecret(salt: Field, secret: Field) {
+//     const x = this.x.get();
+//     this.x.requireEquals(x);
 
-    Poseidon.hash([salt, secret]).assertEquals(x);
-    this.x.set(Poseidon.hash([salt, secret]));
-  }
-}
+//     Poseidon.hash([salt, secret]).assertEquals(x);
+//     this.x.set(Poseidon.hash([salt, secret]));
+//   }
+// }
