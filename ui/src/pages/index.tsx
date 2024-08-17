@@ -49,12 +49,15 @@ export default function Home() {
   return (
     <>
     <Head>
-      <title>Mina zkApp UI</title>
+      <title>zkWeb On-Chain</title>
       <meta name="description" content="built with o1js" />
       <link rel="icon" href="/assets/favicon.ico" />
     </Head>
     <GradientBG>
       <main className={styles.main}>
+        <nav>
+          <button className="nav-button">Get Started</button>
+        </nav>
         <div className={styles.center}>
           <a
             href=""
@@ -74,6 +77,7 @@ export default function Home() {
             built with
             <code className={styles.code}>o1js</code>
           </p> */}
+          <input className="custom-input" placeholder="Enter the secret key..." />
           <button className="custom-button" onClick={() => deployContract()}>Prove</button>
 
         </div>

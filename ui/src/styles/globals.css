@@ -50,7 +50,7 @@ a {
 
 .custom-button {
   padding: 12px 24px; /* Equivalent to px-6 py-3 in Tailwind */
-  margin-top: -36px;
+  margin-top: 8px;
   background-color: #312858; /* Equivalent to bg-blue-600 in Tailwind */
   color: white; /* Equivalent to text-white in Tailwind */
   font-weight: 600; /* Equivalent to font-semibold in Tailwind */
@@ -58,6 +58,7 @@ a {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Equivalent to shadow-md in Tailwind */
   transition: background-color 0.2s ease, transform 0.2s ease; /* Equivalent to transition-transform in Tailwind */
   outline: none; /* Equivalent to focus:outline-none in Tailwind */
+  z-index: 9999;
 }
 
 .custom-button:hover {
@@ -72,4 +73,43 @@ a {
 
 .custom-button:active {
   transform: scale(0.95); /* Adds a small effect when the button is clicked */
+}
+
+.custom-input {
+  margin-top: -72px;
+  width: 400px;
+  height: 30px;
+  z-index: 9999;
+}
+
+.nav-button {
+  position: fixed; /* Keeps the button fixed in the same spot even when scrolling */
+  top: 20px; /* Adjusts the button's distance from the top of the screen */
+  right: 20px; /* Adjusts the button's distance from the right of the screen */
+  padding: 0.8rem 1.2rem; /* Adds padding to make the button larger and comfortable to click */
+  background-color: rgb(255, 255, 255); /* Matches the card background color */
+  color: #2d2d2d; /* Matches the card border color for the text */
+  border: 1px solid #2d2d2d; /* Matches the card border */
+  border-radius: 4px 1px; /* Matches the card's border-radius */
+  font-weight: 600; /* Makes the text bold */
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+  transition: background-color 0.2s ease, transform 0.2s ease; /* Adds smooth transitions */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow similar to the cards */
+}
+
+.nav-button:hover {
+  background-color: #f3f3f3; /* Lightens the background on hover */
+  transform: scale(1.05); /* Slightly enlarges the button on hover */
+}
+
+.nav-button:focus {
+  outline: none; /* Removes the default focus outline */
+  box-shadow: 0px 0px 0px 4px rgba(96, 165, 250, 0.75); /* Adds a focus ring similar to the button styles */
+}
+
+
+@media (max-width: 700px) {
+  .custom-input {
+    width: 300px;
+  }
 }

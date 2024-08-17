@@ -186,9 +186,8 @@
   }
 
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Ensures a single-column layout */
     max-width: 320px;
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .start {
@@ -204,7 +203,12 @@
   .center {
     padding: 0 0 3rem 0.3rem;
   }
+
+  .logo {
+    max-width: 400px;
+  }
 }
+
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
