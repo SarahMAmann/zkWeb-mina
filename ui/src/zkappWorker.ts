@@ -27,7 +27,7 @@ const functions = {
   },
   loadContract: async (args: {}) => {
     // const { Match } = await import('../../../contracts/build/src/Match.js');
-    const { Match } = await import('../pages/contract-build/Match.js');
+    const { Match } = await import('./contract-build/Match.js');
     state.Match = Match;
   },
   compileContract: async (args: {}) => {

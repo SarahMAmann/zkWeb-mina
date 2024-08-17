@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import zkwebLogo from '../../public/assets/zkweb-logo.svg';
 import zkwebBannerImage from '../../public/assets/zkweb-banner-image.svg';
-import ZkappWorkerClient from './zkappWorkerClient';
+import ZkappWorkerClient from '../zkappWorkerClient';
 import { createClient } from '../utils/supabase/client'
 
 let transactionFee = 0.1;
