@@ -4,11 +4,14 @@ type Transaction = Awaited<ReturnType<typeof Mina.transaction>>;
 
 // ---------------------------------------------------------------------------------------
 
-import type { Match } from '../../../contracts/src/Match';
+// import type { Match } from '../../../contracts/src/Match';
 
 const state = {
-  Match: null as null | typeof Match,
-  zkapp: null as null | Match,
+//   Match: null as null | typeof Match,
+//   zkapp: null as null | Match,
+// Not ideal but at the moment it will not deploy on Vercel otherwise
+  Match: null as null | any,
+  zkapp: null as null | any,
   transaction: null as null | Transaction,
 };
 
