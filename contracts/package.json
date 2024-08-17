@@ -15,6 +15,7 @@
   "types": "build/src/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "postinstall": "npm install o1js",
     "buildw": "tsc --watch",
     "coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "format": "prettier --write --ignore-unknown **/*",
