@@ -4,11 +4,11 @@ type Transaction = Awaited<ReturnType<typeof Mina.transaction>>;
 
 // ---------------------------------------------------------------------------------------
 
-// import type { Match } from '../../../contracts/src/Match';
+// import type { Match } from '../../contracts/src/Match';
 
 const state = {
-//   Match: null as null | typeof Match,
-//   zkapp: null as null | Match,
+  // Match: null as null | typeof Match,
+  // zkapp: null as null | Match,
 // Not ideal but at the moment it will not deploy on Vercel otherwise
   Match: null as null | any,
   zkapp: null as null | any,
@@ -26,8 +26,8 @@ const functions = {
     Mina.setActiveInstance(Network);
   },
   loadContract: async (args: {}) => {
-    // const { Match } = await import('../../../contracts/build/src/Match.js');
-    const { Match } = await import('./contract-build/Match.js');
+    const { Match } = await import('../../contracts/build/src/Match.js');
+    // const { Match } = await import('./contract-build/Match.js');
     state.Match = Match;
   },
   compileContract: async (args: {}) => {
@@ -46,9 +46,9 @@ const functions = {
 //     return JSON.stringify(currentNum.toJSON());
 //   },
   createUpdateTransaction: async (args: {salt: Field, secret: Field}) => {
-    console.log('TX KEY:', args.secret)
+    console.log('TX KEY:', args)
     const transaction = await Mina.transaction(async () => {
-      await state.zkapp!.matchSecret(args.salt, args.secret);
+      await state.zkapp!.matchSecret(Field(args.salt), Field(args.secret));
     });
     state.transaction = transaction;
   },
@@ -79,7 +79,10 @@ if (typeof window !== 'undefined') {
   addEventListener(
     'message',
     async (event: MessageEvent<ZkappWorkerRequest>) => {
-      const returnData = await functions[event.data.fn](event.data.args);
+      console.log('FUNC', event.data.fn)
+      console.log('EVENT ARGS', event.data.args)
+
+      const returnData = event.data.fn === 'createUpdateTransaction' ? await functions[event.data.fn]({salt: event.data.args.salt.value[1][1], secret: event.data.args.secret.value[1][1]}) : await functions[event.data.fn](event.data.args);
 
       const message: ZkappWorkerReponse = {
         id: event.data.id,

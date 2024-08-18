@@ -154,7 +154,7 @@ export default function Home() {
       publicKey: state.publicKey!,
     });
 
-    await state.zkappWorkerClient!.createUpdateTransaction(Field.random(), Field(secretKey));
+    await state.zkappWorkerClient!.createUpdateTransaction(Field(0), Field(secretKey));
 
     setDisplayText('Creating proof...');
     console.log('Creating proof...');
